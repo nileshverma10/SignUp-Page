@@ -1,0 +1,52 @@
+.email{
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+  }
+  .email:focus {
+    outline: none;
+  }
+  input, select, textarea {
+    font-size: 150%;
+    padding-left: 10px;
+
+    }
+    .input{
+        outline: 5px black;
+    }
+
+    .finput{
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+    }
+    
+.finput:focus {
+    outline: none;
+  }
+  .linput{
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+  }
+  .linput:focus {
+    outline: none;
+  }
+  .pass{
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+  }
+  .pass:focus {
+    outline: none;
+  }
+
+  input {
+    border: 2px solid black;
+  }
+  .btn{
+    margin-top: 50px;
+    padding: 8px 40px ;
+    font-size: 150%;
+    border-radius: 30px;
+  }
