@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const data = require('../controller/main')
+const data = require("../controller/main");
 
-
-router.post('/addData', data.addData)
-router.get('/getData', data.getData)
-
-module.exports = router
+router.post("/addData", data.addData);
+router.get("/getData", data.getData);
+router.delete("/deleteData/:id", data.deleteData);
+router.patch("/patchData/:id", data.patchData);
+module.exports = router;
