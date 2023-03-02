@@ -1,16 +1,34 @@
 import { useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
-import Gender from "./Gender";
 
-function SignUp() {
+function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [number, setNumber] = useState("");
-  console.log({ email, password, fname, lname, number, confirmPassword });
+
+  const getInitialState = () => {
+    const value = "male, female,other";
+    return value;
+  };
+  const [gender, setGender] = useState(getInitialState);
+
+  const handleChange = (e) => {
+    setGender(e.target.value);
+  };
+
+  console.log({
+    email,
+    password,
+    fname,
+    lname,
+    number,
+    confirmPassword,
+    gender,
+  });
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -27,7 +45,7 @@ function SignUp() {
   };
 
   const handleApi = () => {
-    console.log({ email, password, fname, lname, number });
+    console.log({ email, password, fname, lname, number, gender });
 
     axios
       .post("http://localhost:5000/addData", {
@@ -36,6 +54,7 @@ function SignUp() {
         fname: fname,
         lname: lname,
         phone: number,
+        gender: gender,
       })
       .then((result) => {
         console.log(result.data);
@@ -54,6 +73,28 @@ function SignUp() {
       })
       .catch((error) => {
         alert("service error");
+        console.log(error);
+      });
+
+    axios
+      .delete("http://localhost:5000/deleteData")
+      .then((result) => {
+        console.log(result.data);
+        // alert("success");
+      })
+      .catch((error) => {
+        // alert("service error");
+        console.log(error);
+      });
+
+    axios
+      .patch("http://localhost:5000/patchData")
+      .then((result) => {
+        console.log(result.data);
+        // alert("success");
+      })
+      .catch((error) => {
+        // alert("service error");
         console.log(error);
       });
   };
@@ -79,7 +120,12 @@ function SignUp() {
       />
       <br />
       <h3>Gender</h3>
-      <Gender />
+      <select className="genselect" value={gender} onChange={handleChange}>
+        <option>Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
       <br />
       <h3>Contact Number</h3>
       <input

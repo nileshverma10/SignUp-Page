@@ -50,3 +50,14 @@
     font-size: 150%;
     border-radius: 30px;
   }
+  .genselect{
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+}
+.genselect:focus {
+    outline: none;
+  }
+  .genselect  {
+    border: 2px solid black;
+  }
